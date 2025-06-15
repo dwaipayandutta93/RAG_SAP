@@ -1,0 +1,894 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DATA_IMPORT LOCALE="en_US" VERSION="57.0">
+    <RULE_SET>
+        <RULE BUSINESS_UNITS="BFSI_UK" CALENDAR="BFSI_Main_Monthly_Calendar" DESCRIPTION="Calc credit for Earned Premium txn" ECA="true" EFFECTIVE_END_DATE="Jan 1, 2200" EFFECTIVE_START_DATE="Jan 1, 2023" NAME="CR_VAR_COMP_EARNED_PREMIUM" NOTALLOWUPDATE="false" TYPE="DIRECT_TRANSACTION_CREDIT">
+            <ACTION_EXPRESSION_SET>
+                <ACTION_EXPRESSION>
+                    <FUNCTION ID="DIRECT_TRANSACTION_CREDIT_ALLGAs" RULE_TYPES="DIRECT_TRANSACTION_CREDIT">
+                        <OUTPUT_REFERENCE DISPLAY_NAME_FOR_REPORTS="C_VAR_COMP_EARNED_PREMIUM" IS_REPORTABLE="1" NAME="C_VAR_COMP_EARNED_PREMIUM" PERIOD_TYPE="month" TYPE="Credit" UNIT_TYPE="USD"/>
+                        <DATA_FIELD>SalesTransaction.value</DATA_FIELD>
+                        <HOLD_REF NAME="Release Immediately" PERIOD_TYPE="Release Immediately"/>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <CREDIT_TYPE>CT_EARNED_PREMIUM</CREDIT_TYPE>
+                        <BOOLEAN>false</BOOLEAN>
+                        <BOOLEAN>true</BOOLEAN>
+                        <DATA_FIELD>SalesTransaction.compensationDate</DATA_FIELD>
+                        <DATA_FIELD>SalesTransaction.productId</DATA_FIELD>
+                        <DATA_FIELD>SalesTransaction.genericAttribute1</DATA_FIELD>
+                        <DATA_FIELD>SalesTransaction.productName</DATA_FIELD>
+                        <DATA_FIELD>SalesTransaction.productDescription</DATA_FIELD>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                    </FUNCTION>
+                </ACTION_EXPRESSION>
+            </ACTION_EXPRESSION_SET>
+            <CONDITION_EXPRESSION>
+                <OPERATOR ID="ISEQUALTO_OPERATOR">
+                    <RULE_ELEMENT_REF ID="BOOLEAN_FORMULA_REF" NAME="F_PAYEE_CREDIT_ELIGIBILTY"/>
+                    <BOOLEAN>true</BOOLEAN>
+                </OPERATOR>
+            </CONDITION_EXPRESSION>
+            <EVENT_TYPE_EXPRESSION>
+                <OPERATOR ID="ISEQUALTO_OPERATOR">
+                    <DATA_FIELD>SalesTransaction.eventType.eventTypeId</DATA_FIELD>
+                    <STRING_LITERAL><![CDATA[ET_EARNED_PREMIUM]]></STRING_LITERAL>
+                </OPERATOR>
+            </EVENT_TYPE_EXPRESSION>
+        </RULE>
+    </RULE_SET>
+    <RULE_SET>
+        <RULE BUSINESS_UNITS="BFSI_UK" CALENDAR="BFSI_Main_Monthly_Calendar" DESCRIPTION="Rolled credit for reporting manager" EFFECTIVE_END_DATE="Jan 1, 2200" EFFECTIVE_START_DATE="Jan 1, 2023" NAME="CR_VAR_COMP_ROLLED_EARNED_PREMIUM" NOTALLOWUPDATE="false" TYPE="ROLLUP_TRANSACTION_CREDIT">
+            <ACTION_EXPRESSION_SET>
+                <ACTION_EXPRESSION>
+                    <FUNCTION ID="INDIRECT_TRANSACTION_CREDIT_ALLGAs" RULE_TYPES="ROLLUP_TRANSACTION_CREDIT">
+                        <OUTPUT_REFERENCE DISPLAY_NAME_FOR_REPORTS="C_VAR_COMP_ROLLED_EARNED_PREMIUM" IS_REPORTABLE="1" NAME="C_VAR_COMP_ROLLED_EARNED_PREMIUM" PERIOD_TYPE="month" TYPE="Credit" UNIT_TYPE="USD"/>
+                        <DATA_FIELD>SubordinateCredit.value</DATA_FIELD>
+                        <HOLD_REF NAME="Release Immediately" PERIOD_TYPE="Release Immediately"/>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <CREDIT_TYPE>CT_EARNED_PREMIUM</CREDIT_TYPE>
+                        <BOOLEAN>false</BOOLEAN>
+                        <BOOLEAN>false</BOOLEAN>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <DATA_FIELD>SubordinateCredit.genericAttribute1</DATA_FIELD>
+                        <DATA_FIELD>SubordinateCredit.genericAttribute2</DATA_FIELD>
+                        <DATA_FIELD>SubordinateCredit.genericAttribute3</DATA_FIELD>
+                        <DATA_FIELD>SubordinateCredit.genericAttribute4</DATA_FIELD>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                    </FUNCTION>
+                </ACTION_EXPRESSION>
+            </ACTION_EXPRESSION_SET>
+            <CONDITION_EXPRESSION>
+                <OPERATOR ID="ISEQUALTO_OPERATOR">
+                    <DATA_FIELD>SubordinateCredit.creditType</DATA_FIELD>
+                    <CREDIT_TYPE>CT_EARNED_PREMIUM</CREDIT_TYPE>
+                </OPERATOR>
+            </CONDITION_EXPRESSION>
+            <ROLLUP_EXPRESSION_SET>
+                <ROLLUP_EXPRESSION>
+                    <RELATION_TYPE>Reporting</RELATION_TYPE>
+                </ROLLUP_EXPRESSION>
+            </ROLLUP_EXPRESSION_SET>
+        </RULE>
+    </RULE_SET>
+    <RULE_SET>
+        <RULE BUSINESS_UNITS="BFSI_UK" CALENDAR="BFSI_Main_Monthly_Calendar" EFFECTIVE_END_DATE="Jan 1, 2200" EFFECTIVE_START_DATE="Jan 1, 2023" NAME="IR_CL_VAR_COMP_COMMISSION" NOTALLOWUPDATE="false" TYPE="BULK_COMMISSION">
+            <ACTION_EXPRESSION_SET>
+                <ACTION_EXPRESSION>
+                    <FUNCTION ID="INCENTIVE_GAS" RULE_TYPES="BULK_COMMISSION">
+                        <OUTPUT_REFERENCE DISPLAY_NAME_FOR_REPORTS="I_CL_VAR_COMP_COMMISSION" IS_REPORTABLE="1" NAME="I_CL_VAR_COMP_COMMISSION" PERIOD_TYPE="month" TYPE="Incentive" UNIT_TYPE="USD"/>
+                        <MEASUREMENT_REF LIST_OPERATION="EXPECT_ONE" NAME="SM_CL_VAR_COMP_COMMISSION" OUTPUT_REFERENCE_PERIOD_TYPE="month" PAYEE_OFFSET="0" PERIOD_OFFSET="0" PERIOD_TYPE="month"/>
+                        <HOLD_REF NAME="Period Type" PERIOD_OFFSET="0" PERIOD_TYPE="month"/>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                    </FUNCTION>
+                </ACTION_EXPRESSION>
+            </ACTION_EXPRESSION_SET>
+        </RULE>
+    </RULE_SET>
+    <RULE_SET>
+        <RULE BUSINESS_UNITS="BFSI_UK" CALENDAR="BFSI_Main_Monthly_Calendar" EFFECTIVE_END_DATE="Jan 1, 2200" EFFECTIVE_START_DATE="Jan 1, 2023" NAME="DR_VAR_COMP_COMMISSION" NOTALLOWUPDATE="false" TYPE="DEPOSIT">
+            <ACTION_EXPRESSION_SET>
+                <ACTION_EXPRESSION>
+                    <FUNCTION ID="DEPOSIT_GAS" RULE_TYPES="DEPOSIT">
+                        <OUTPUT_REFERENCE DISPLAY_NAME_FOR_REPORTS="D_VAR_COMP_COMMISSION" IS_REPORTABLE="1" NAME="D_VAR_COMP_COMMISSION" PERIOD_TYPE="month" TYPE="Deposit" UNIT_TYPE="USD"/>
+                        <STRING_LITERAL><![CDATA[EC_VC]]></STRING_LITERAL>
+                        <STRING_LITERAL><![CDATA[EG_VC]]></STRING_LITERAL>
+                        <OPERATOR ID="ADD_OPERATOR">
+                            <OPERATOR ID="ADD_OPERATOR">
+                                <INCENTIVE_REF LIST_OPERATION="EXPECT_ONE" NAME="I_PL_VAR_COMP_COMMISSION" OUTPUT_REFERENCE_PERIOD_TYPE="month" PAYEE_OFFSET="0" PERIOD_OFFSET="0" PERIOD_TYPE="month"/>
+                                <INCENTIVE_REF LIST_OPERATION="EXPECT_ONE" NAME="I_CL_VAR_COMP_COMMISSION" OUTPUT_REFERENCE_PERIOD_TYPE="month" PAYEE_OFFSET="0" PERIOD_OFFSET="0" PERIOD_TYPE="month"/>
+                            </OPERATOR>
+                            <MEASUREMENT_REF LIST_OPERATION="EXPECT_ONE" NAME="PM_VAR_COMP_MANUAL" OUTPUT_REFERENCE_PERIOD_TYPE="month" PAYEE_OFFSET="0" PERIOD_OFFSET="0" PERIOD_TYPE="month"/>
+                        </OPERATOR>
+                        <HOLD_REF NAME="Release Immediately" PERIOD_TYPE="Release Immediately"/>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                    </FUNCTION>
+                </ACTION_EXPRESSION>
+            </ACTION_EXPRESSION_SET>
+        </RULE>
+    </RULE_SET>
+    <RULE_SET>
+        <RULE BUSINESS_UNITS="BFSI_UK" CALENDAR="BFSI_Main_Monthly_Calendar" EFFECTIVE_END_DATE="Jan 1, 2200" EFFECTIVE_START_DATE="Jan 1, 2023" NAME="SMR_PL_VAR_COMP_COMMISSION" NOTALLOWUPDATE="false" TYPE="SECONDARY_MEASUREMENT">
+            <ACTION_EXPRESSION_SET>
+                <ACTION_EXPRESSION>
+                    <FUNCTION ID="SECONDARY_MEASUREMENT_GAS" RULE_TYPES="SECONDARY_MEASUREMENT">
+                        <OUTPUT_REFERENCE DISPLAY_NAME_FOR_REPORTS="PL_COMMISSION" IS_REPORTABLE="1" NAME="SM_PL_VAR_COMP_COMMISSION" PERIOD_TYPE="month" TYPE="Measurement" UNIT_TYPE="USD"/>
+                        <FUNCTION ID="ifThenElse" RULE_TYPES="DIRECT_TRANSACTION_CREDIT|ROLLUP_TRANSACTION_CREDIT|DIRECT_ORDER_CREDIT|ROLLUP_ORDER_CREDIT|PRIMARY_MEASUREMENT|SECONDARY_MEASUREMENT|BONUS|BULK_COMMISSION|COMMISSION|DEPOSIT|DETAIL_DEPOSIT">
+                            <OPERATOR ID="NOTEQUALTO_OPERATOR">
+                                <DATA_FIELD>Position.title.name</DATA_FIELD>
+                                <STRING_LITERAL><![CDATA[T_SALES_EXECUTIVE]]></STRING_LITERAL>
+                            </OPERATOR>
+                            <OPERATOR ID="MULTIPLY_OPERATOR">
+                                <MEASUREMENT_REF LIST_OPERATION="EXPECT_ONE" NAME="SM_PL_VAR_COMP_12MM_PREMIUM" OUTPUT_REFERENCE_PERIOD_TYPE="month" PAYEE_OFFSET="0" PERIOD_OFFSET="0" PERIOD_TYPE="month"/>
+                                <RULE_ELEMENT_REF ID="PERCENT_FIXEDVALUE_VARIABLE" NAME="FVV_Commission_Rate"/>
+                            </OPERATOR>
+                            <OPERATOR ID="MULTIPLY_OPERATOR">
+                                <MEASUREMENT_REF LIST_OPERATION="EXPECT_ONE" NAME="SM_PL_VAR_COMP_12MM_PREMIUM" OUTPUT_REFERENCE_PERIOD_TYPE="month" PAYEE_OFFSET="0" PERIOD_OFFSET="0" PERIOD_TYPE="month"/>
+                                <RULE_ELEMENT_REF ID="PERCENT_FORMULA_REF" NAME="F_PL_Commission_Rate"/>
+                            </OPERATOR>
+                        </FUNCTION>
+                        <FUNCTION ID="VALUE_TO_STRING" RULE_TYPES="DIRECT_TRANSACTION_CREDIT|ROLLUP_TRANSACTION_CREDIT|DIRECT_ORDER_CREDIT|ROLLUP_ORDER_CREDIT|PRIMARY_MEASUREMENT|SECONDARY_MEASUREMENT|BONUS|BULK_COMMISSION|COMMISSION|DEPOSIT|DETAIL_DEPOSIT">
+                            <RULE_ELEMENT_REF ID="PERCENT_FIXEDVALUE_VARIABLE" NAME="FVV_Commission_Rate"/>
+                        </FUNCTION>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <RULE_ELEMENT_REF ID="PERCENT_FIXEDVALUE_VARIABLE" NAME="FVV_VAR_COMP_RATE"/>
+                        <MEASUREMENT_REF LIST_OPERATION="EXPECT_ONE" NAME="SM_PL_VAR_COMP_12MM_PREMIUM" OUTPUT_REFERENCE_PERIOD_TYPE="month" PAYEE_OFFSET="0" PERIOD_OFFSET="0" PERIOD_TYPE="month"/>
+                        <MEASUREMENT_REF LIST_OPERATION="EXPECT_ONE" NAME="SM_PL_VAR_COMP_12MM_EARNED_PREMIUM" OUTPUT_REFERENCE_PERIOD_TYPE="month" PAYEE_OFFSET="0" PERIOD_OFFSET="0" PERIOD_TYPE="month"/>
+                        <MEASUREMENT_REF LIST_OPERATION="EXPECT_ONE" NAME="SM_PL_VAR_COMP_12MM_IncurredLoss" OUTPUT_REFERENCE_PERIOD_TYPE="month" PAYEE_OFFSET="0" PERIOD_OFFSET="0" PERIOD_TYPE="month"/>
+                        <MEASUREMENT_REF LIST_OPERATION="EXPECT_ONE" NAME="SM_PL_VAR_COMP_GROWTH_RATE_FACTOR" OUTPUT_REFERENCE_PERIOD_TYPE="month" PAYEE_OFFSET="0" PERIOD_OFFSET="0" PERIOD_TYPE="month"/>
+                        <MEASUREMENT_REF LIST_OPERATION="EXPECT_ONE" NAME="SM_PL_VAR_COMP_LOSS_RATIO_FACTOR" OUTPUT_REFERENCE_PERIOD_TYPE="month" PAYEE_OFFSET="0" PERIOD_OFFSET="0" PERIOD_TYPE="month"/>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                    </FUNCTION>
+                </ACTION_EXPRESSION>
+            </ACTION_EXPRESSION_SET>
+            <CONDITION_EXPRESSION>
+                <OPERATOR ID="LESSTHANEQUALTO_OPERATOR">
+                    <RULE_ELEMENT_REF ID="CURRENCY_FIXEDVALUE_VARIABLE" NAME="FVV_Sales_Executive_Target"/>
+                    <MEASUREMENT_REF LIST_OPERATION="EXPECT_ONE" NAME="SM_PL_VAR_COMP_12MM_PREMIUM" OUTPUT_REFERENCE_PERIOD_TYPE="month" PAYEE_OFFSET="0" PERIOD_OFFSET="0" PERIOD_TYPE="month"/>
+                </OPERATOR>
+            </CONDITION_EXPRESSION>
+        </RULE>
+    </RULE_SET>
+    <RULE_SET>
+        <RULE BUSINESS_UNITS="BFSI_UK" CALENDAR="BFSI_Main_Monthly_Calendar" DESCRIPTION="New earned premium" EFFECTIVE_END_DATE="Jan 1, 2200" EFFECTIVE_START_DATE="Jan 1, 2023" NAME="PMR_VAR_COMP_PL_NEW_EP" NOTALLOWUPDATE="false" TYPE="PRIMARY_MEASUREMENT">
+            <ACTION_EXPRESSION_SET>
+                <ACTION_EXPRESSION>
+                    <FUNCTION ID="PRIMARY_MEASUREMENT" RULE_TYPES="PRIMARY_MEASUREMENT">
+                        <OUTPUT_REFERENCE DISPLAY_NAME_FOR_REPORTS="PL_NEW_EarnedPremium" IS_REPORTABLE="1" NAME="PM_VAR_COMP_PL_NEW_EP" PERIOD_TYPE="month" TYPE="Measurement" UNIT_TYPE="USD"/>
+                        <DATA_FIELD>Credit.value</DATA_FIELD>
+                    </FUNCTION>
+                </ACTION_EXPRESSION>
+            </ACTION_EXPRESSION_SET>
+            <CONDITION_EXPRESSION>
+                <OPERATOR ID="AND_OPERATOR">
+                    <OPERATOR ID="ISEQUALTO_OPERATOR">
+                        <DATA_FIELD>Credit.creditType</DATA_FIELD>
+                        <CREDIT_TYPE>CT_EARNED_PREMIUM</CREDIT_TYPE>
+                    </OPERATOR>
+                    <OPERATOR ID="ISEQUALTO_OPERATOR">
+                        <DATA_FIELD>Credit.genericAttribute2</DATA_FIELD>
+                        <STRING_LITERAL><![CDATA[New]]></STRING_LITERAL>
+                    </OPERATOR>
+                    <OPERATOR ID="ISEQUALTO_OPERATOR">
+                        <DATA_FIELD>Credit.genericAttribute3</DATA_FIELD>
+                        <STRING_LITERAL><![CDATA[Personal Line]]></STRING_LITERAL>
+                    </OPERATOR>
+                </OPERATOR>
+            </CONDITION_EXPRESSION>
+        </RULE>
+    </RULE_SET>
+    <RULE_SET>
+        <RULE BUSINESS_UNITS="BFSI_UK" CALENDAR="BFSI_Main_Monthly_Calendar" DESCRIPTION="Renew earned premium" EFFECTIVE_END_DATE="Jan 1, 2200" EFFECTIVE_START_DATE="Jan 1, 2023" NAME="PMR_VAR_COMP_PL_RENEW_EP" NOTALLOWUPDATE="false" TYPE="PRIMARY_MEASUREMENT">
+            <ACTION_EXPRESSION_SET>
+                <ACTION_EXPRESSION>
+                    <FUNCTION ID="PRIMARY_MEASUREMENT" RULE_TYPES="PRIMARY_MEASUREMENT">
+                        <OUTPUT_REFERENCE DISPLAY_NAME_FOR_REPORTS="PL_RENEW_EarnedPremium" IS_REPORTABLE="1" NAME="PM_VAR_COMP_PL_RENEW_EP" PERIOD_TYPE="month" TYPE="Measurement" UNIT_TYPE="USD"/>
+                        <DATA_FIELD>Credit.value</DATA_FIELD>
+                    </FUNCTION>
+                </ACTION_EXPRESSION>
+            </ACTION_EXPRESSION_SET>
+            <CONDITION_EXPRESSION>
+                <OPERATOR ID="AND_OPERATOR">
+                    <OPERATOR ID="ISEQUALTO_OPERATOR">
+                        <DATA_FIELD>Credit.creditType</DATA_FIELD>
+                        <CREDIT_TYPE>CT_EARNED_PREMIUM</CREDIT_TYPE>
+                    </OPERATOR>
+                    <OPERATOR ID="ISEQUALTO_OPERATOR">
+                        <DATA_FIELD>Credit.genericAttribute2</DATA_FIELD>
+                        <STRING_LITERAL><![CDATA[Renew]]></STRING_LITERAL>
+                    </OPERATOR>
+                    <OPERATOR ID="ISEQUALTO_OPERATOR">
+                        <DATA_FIELD>Credit.genericAttribute3</DATA_FIELD>
+                        <STRING_LITERAL><![CDATA[Personal Line]]></STRING_LITERAL>
+                    </OPERATOR>
+                </OPERATOR>
+            </CONDITION_EXPRESSION>
+        </RULE>
+        <RULE BUSINESS_UNITS="BFSI_UK" CALENDAR="BFSI_Main_Monthly_Calendar" DESCRIPTION="Calc credit for Premium txn" ECA="true" EFFECTIVE_END_DATE="Jan 1, 2026" EFFECTIVE_START_DATE="Jan 1, 2023" NAME="C_VAR_COMP_PREMIUM" NOTALLOWUPDATE="false" TYPE="DIRECT_TRANSACTION_CREDIT">
+            <ACTION_EXPRESSION_SET>
+                <ACTION_EXPRESSION>
+                    <FUNCTION ID="DIRECT_TRANSACTION_CREDIT_ALLGAs" RULE_TYPES="DIRECT_TRANSACTION_CREDIT">
+                        <OUTPUT_REFERENCE DISPLAY_NAME_FOR_REPORTS="C_VAR_COMP_PREMIUM" IS_REPORTABLE="1" NAME="CR_VAR_COMP_PREMIUM" PERIOD_TYPE="month" TYPE="Credit" UNIT_TYPE="USD"/>
+                        <DATA_FIELD>SalesTransaction.value</DATA_FIELD>
+                        <HOLD_REF NAME="Release Immediately" PERIOD_TYPE="Release Immediately"/>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <CREDIT_TYPE>CT_PREMIUM</CREDIT_TYPE>
+                        <BOOLEAN>false</BOOLEAN>
+                        <BOOLEAN>true</BOOLEAN>
+                        <DATA_FIELD>SalesTransaction.compensationDate</DATA_FIELD>
+                        <DATA_FIELD>SalesTransaction.productId</DATA_FIELD>
+                        <DATA_FIELD>SalesTransaction.genericAttribute1</DATA_FIELD>
+                        <DATA_FIELD>SalesTransaction.productName</DATA_FIELD>
+                        <DATA_FIELD>SalesTransaction.productDescription</DATA_FIELD>
+                        <DATA_FIELD>SalesTransaction.genericAttribute4</DATA_FIELD>
+                        <DATA_FIELD>SalesTransaction.genericAttribute5</DATA_FIELD>
+                        <DATA_FIELD>SalesTransaction.genericAttribute6</DATA_FIELD>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <FUNCTION ID="_deltaDate" RULE_TYPES="DIRECT_TRANSACTION_CREDIT|ROLLUP_TRANSACTION_CREDIT|DIRECT_ORDER_CREDIT|ROLLUP_ORDER_CREDIT|PRIMARY_MEASUREMENT|SECONDARY_MEASUREMENT|BONUS|BULK_COMMISSION|COMMISSION|DEPOSIT|DETAIL_DEPOSIT">
+                            <DATA_FIELD>Participant.terminationDate</DATA_FIELD>
+                            <DATA_FIELD>Period.endDate</DATA_FIELD>
+                            <STANDARD_PERIOD>Months</STANDARD_PERIOD>
+                            <BOOLEAN>true</BOOLEAN>
+                        </FUNCTION>
+                        <FUNCTION ID="_deltaDate" RULE_TYPES="DIRECT_TRANSACTION_CREDIT|ROLLUP_TRANSACTION_CREDIT|DIRECT_ORDER_CREDIT|ROLLUP_ORDER_CREDIT|PRIMARY_MEASUREMENT|SECONDARY_MEASUREMENT|BONUS|BULK_COMMISSION|COMMISSION|DEPOSIT|DETAIL_DEPOSIT">
+                            <DATA_FIELD>Participant.terminationDate</DATA_FIELD>
+                            <DATA_FIELD>Period.endDate</DATA_FIELD>
+                            <STANDARD_PERIOD>Years</STANDARD_PERIOD>
+                            <BOOLEAN>true</BOOLEAN>
+                        </FUNCTION>
+                        <FUNCTION ID="_deltaDate" RULE_TYPES="DIRECT_TRANSACTION_CREDIT|ROLLUP_TRANSACTION_CREDIT|DIRECT_ORDER_CREDIT|ROLLUP_ORDER_CREDIT|PRIMARY_MEASUREMENT|SECONDARY_MEASUREMENT|BONUS|BULK_COMMISSION|COMMISSION|DEPOSIT|DETAIL_DEPOSIT">
+                            <DATA_FIELD>Participant.terminationDate</DATA_FIELD>
+                            <DATA_FIELD>Period.endDate</DATA_FIELD>
+                            <STANDARD_PERIOD>Months</STANDARD_PERIOD>
+                            <BOOLEAN>false</BOOLEAN>
+                        </FUNCTION>
+                        <FUNCTION ID="_deltaDate" RULE_TYPES="DIRECT_TRANSACTION_CREDIT|ROLLUP_TRANSACTION_CREDIT|DIRECT_ORDER_CREDIT|ROLLUP_ORDER_CREDIT|PRIMARY_MEASUREMENT|SECONDARY_MEASUREMENT|BONUS|BULK_COMMISSION|COMMISSION|DEPOSIT|DETAIL_DEPOSIT">
+                            <DATA_FIELD>Participant.terminationDate</DATA_FIELD>
+                            <DATA_FIELD>Period.endDate</DATA_FIELD>
+                            <STANDARD_PERIOD>Years</STANDARD_PERIOD>
+                            <BOOLEAN>false</BOOLEAN>
+                        </FUNCTION>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                    </FUNCTION>
+                </ACTION_EXPRESSION>
+            </ACTION_EXPRESSION_SET>
+            <CONDITION_EXPRESSION>
+                <OPERATOR ID="ISEQUALTO_OPERATOR">
+                    <RULE_ELEMENT_REF ID="BOOLEAN_FORMULA_REF" NAME="F_PAYEE_CREDIT_ELIGIBILTY"/>
+                    <BOOLEAN>true</BOOLEAN>
+                </OPERATOR>
+            </CONDITION_EXPRESSION>
+            <EVENT_TYPE_EXPRESSION>
+                <OPERATOR ID="OR_OPERATOR">
+                    <OPERATOR ID="ISEQUALTO_OPERATOR">
+                        <DATA_FIELD>SalesTransaction.eventType.eventTypeId</DATA_FIELD>
+                        <STRING_LITERAL><![CDATA[ET_Premium]]></STRING_LITERAL>
+                    </OPERATOR>
+                    <OPERATOR ID="ISEQUALTO_OPERATOR">
+                        <DATA_FIELD>SalesTransaction.eventType.eventTypeId</DATA_FIELD>
+                        <STRING_LITERAL><![CDATA[ET_PREMIUM]]></STRING_LITERAL>
+                    </OPERATOR>
+                </OPERATOR>
+            </EVENT_TYPE_EXPRESSION>
+        </RULE>
+    </RULE_SET>
+    <RULE_SET>
+        <RULE BUSINESS_UNITS="BFSI_UK" CALENDAR="BFSI_Main_Monthly_Calendar" EFFECTIVE_END_DATE="Jan 1, 2200" EFFECTIVE_START_DATE="Jan 1, 2023" NAME="IR_CL_VAR_COMP_COMMISSION" NOTALLOWUPDATE="false" TYPE="BULK_COMMISSION">
+            <ACTION_EXPRESSION_SET>
+                <ACTION_EXPRESSION>
+                    <FUNCTION ID="INCENTIVE_GAS" RULE_TYPES="BULK_COMMISSION">
+                        <OUTPUT_REFERENCE DISPLAY_NAME_FOR_REPORTS="I_CL_VAR_COMP_COMMISSION" IS_REPORTABLE="1" NAME="IR_CL_VAR_COMP_COMMISSION" PERIOD_TYPE="month" TYPE="Incentive" UNIT_TYPE="USD"/>
+                        <MEASUREMENT_REF LIST_OPERATION="EXPECT_ONE" NAME="SM_CL_VAR_COMP_COMMISSION" OUTPUT_REFERENCE_PERIOD_TYPE="month" PAYEE_OFFSET="0" PERIOD_OFFSET="0" PERIOD_TYPE="month"/>
+                        <HOLD_REF NAME="Period Type" PERIOD_OFFSET="0" PERIOD_TYPE="month"/>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                    </FUNCTION>
+                </ACTION_EXPRESSION>
+            </ACTION_EXPRESSION_SET>
+        </RULE>
+    </RULE_SET>
+    <RULE_SET>
+        <RULE BUSINESS_UNITS="BFSI_UK" CALENDAR="BFSI_Main_Monthly_Calendar" EFFECTIVE_END_DATE="Jan 1, 2200" EFFECTIVE_START_DATE="Jan 1, 2023" NAME="DRR_COMP_COMMISSION" NOTALLOWUPDATE="false" TYPE="DEPOSIT">
+            <ACTION_EXPRESSION_SET>
+                <ACTION_EXPRESSION>
+                    <FUNCTION ID="DEPOSIT_GAS" RULE_TYPES="DEPOSIT">
+                        <OUTPUT_REFERENCE DISPLAY_NAME_FOR_REPORTS="DR_COMP_COMMISSION" IS_REPORTABLE="1" NAME="DR_COMP_COMMISSION" PERIOD_TYPE="month" TYPE="Deposit" UNIT_TYPE="USD"/>
+                        <STRING_LITERAL><![CDATA[EC_VC]]></STRING_LITERAL>
+                        <STRING_LITERAL><![CDATA[EG_VC]]></STRING_LITERAL>
+                        <OPERATOR ID="ADD_OPERATOR">
+                            <OPERATOR ID="ADD_OPERATOR">
+                                <INCENTIVE_REF LIST_OPERATION="EXPECT_ONE" NAME="I_PL_VAR_COMP_COMMISSION" OUTPUT_REFERENCE_PERIOD_TYPE="month" PAYEE_OFFSET="0" PERIOD_OFFSET="0" PERIOD_TYPE="month"/>
+                                <INCENTIVE_REF LIST_OPERATION="EXPECT_ONE" NAME="I_CL_VAR_COMP_COMMISSION" OUTPUT_REFERENCE_PERIOD_TYPE="month" PAYEE_OFFSET="0" PERIOD_OFFSET="0" PERIOD_TYPE="month"/>
+                            </OPERATOR>
+                            <MEASUREMENT_REF LIST_OPERATION="EXPECT_ONE" NAME="PM_VAR_COMP_MANUAL" OUTPUT_REFERENCE_PERIOD_TYPE="month" PAYEE_OFFSET="0" PERIOD_OFFSET="0" PERIOD_TYPE="month"/>
+                        </OPERATOR>
+                        <HOLD_REF NAME="Release Immediately" PERIOD_TYPE="Release Immediately"/>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                    </FUNCTION>
+                </ACTION_EXPRESSION>
+            </ACTION_EXPRESSION_SET>
+        </RULE>
+    </RULE_SET>
+    <RULE_SET>
+        <RULE BUSINESS_UNITS="BFSI_UK" CALENDAR="BFSI_Main_Monthly_Calendar" DESCRIPTION="Renew premium" EFFECTIVE_END_DATE="Jan 1, 2200" EFFECTIVE_START_DATE="Jan 1, 2023" NAME="PMR_VAR_COMP_PL_RENEW_PREMIUM" NOTALLOWUPDATE="false" TYPE="PRIMARY_MEASUREMENT">
+            <ACTION_EXPRESSION_SET>
+                <ACTION_EXPRESSION>
+                    <FUNCTION ID="PRIMARY_MEASUREMENT" RULE_TYPES="PRIMARY_MEASUREMENT">
+                        <OUTPUT_REFERENCE DISPLAY_NAME_FOR_REPORTS="PL_RENEW_PREMIUM" IS_REPORTABLE="1" NAME="PMR_VAR_COMP_PL_RENEW_PREMIUM" PERIOD_TYPE="month" TYPE="Measurement" UNIT_TYPE="USD"/>
+                        <DATA_FIELD>Credit.value</DATA_FIELD>
+                    </FUNCTION>
+                </ACTION_EXPRESSION>
+            </ACTION_EXPRESSION_SET>
+            <CONDITION_EXPRESSION>
+                <OPERATOR ID="AND_OPERATOR">
+                    <OPERATOR ID="ISEQUALTO_OPERATOR">
+                        <DATA_FIELD>Credit.creditType</DATA_FIELD>
+                        <CREDIT_TYPE>CT_PREMIUM</CREDIT_TYPE>
+                    </OPERATOR>
+                    <OPERATOR ID="ISEQUALTO_OPERATOR">
+                        <DATA_FIELD>Credit.genericAttribute2</DATA_FIELD>
+                        <STRING_LITERAL><![CDATA[Renew]]></STRING_LITERAL>
+                    </OPERATOR>
+                    <OPERATOR ID="ISEQUALTO_OPERATOR">
+                        <DATA_FIELD>Credit.genericAttribute3</DATA_FIELD>
+                        <STRING_LITERAL><![CDATA[Personal Line]]></STRING_LITERAL>
+                    </OPERATOR>
+                </OPERATOR>
+            </CONDITION_EXPRESSION>
+        </RULE>
+    </RULE_SET>
+    <RULE_SET>
+        <RULE BUSINESS_UNITS="BFSI_UK" CALENDAR="BFSI_Main_Monthly_Calendar" DESCRIPTION="Total new premium" EFFECTIVE_END_DATE="Jan 1, 2200" EFFECTIVE_START_DATE="Jan 1, 2023" NAME="SMR_VAR_COMP_PL_Total_NEW_Premium" NOTALLOWUPDATE="false" TYPE="SECONDARY_MEASUREMENT">
+            <ACTION_EXPRESSION_SET>
+                <ACTION_EXPRESSION>
+                    <FUNCTION ID="SECONDARY_MEASUREMENT_GAS" RULE_TYPES="SECONDARY_MEASUREMENT">
+                        <OUTPUT_REFERENCE DISPLAY_NAME_FOR_REPORTS="PL_Total_NEW_Premium" IS_REPORTABLE="1" NAME="SMR_VAR_COMP_PL_Total_NEW_Premium" PERIOD_TYPE="month" TYPE="Measurement" UNIT_TYPE="USD"/>
+                        <OPERATOR ID="ADD_OPERATOR">
+                            <MEASUREMENT_REF LIST_OPERATION="EXPECT_ONE" NAME="PM_VAR_COMP_PL_NEW_PREMIUM" OUTPUT_REFERENCE_PERIOD_TYPE="month" PAYEE_OFFSET="0" PERIOD_OFFSET="0" PERIOD_TYPE="month"/>
+                            <MEASUREMENT_REF LIST_OPERATION="EXPECT_ONE" NAME="PM_VAR_COMP_PL_NEW_11MM_PREMIUM" OUTPUT_REFERENCE_PERIOD_TYPE="month" PAYEE_OFFSET="0" PERIOD_OFFSET="0" PERIOD_TYPE="month"/>
+                        </OPERATOR>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <MEASUREMENT_REF LIST_OPERATION="EXPECT_ONE" NAME="PM_VAR_COMP_PL_NEW_PREMIUM" OUTPUT_REFERENCE_PERIOD_TYPE="month" PAYEE_OFFSET="0" PERIOD_OFFSET="0" PERIOD_TYPE="month"/>
+                        <MEASUREMENT_REF LIST_OPERATION="EXPECT_ONE" NAME="PM_VAR_COMP_PL_NEW_11MM_PREMIUM" OUTPUT_REFERENCE_PERIOD_TYPE="month" PAYEE_OFFSET="0" PERIOD_OFFSET="0" PERIOD_TYPE="month"/>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                    </FUNCTION>
+                </ACTION_EXPRESSION>
+            </ACTION_EXPRESSION_SET>
+        </RULE>
+    </RULE_SET>
+	    <RULE_SET>
+        <RULE BUSINESS_UNITS="BFSI_UK" CALENDAR="BFSI_Main_Monthly_Calendar" DESCRIPTION="Calc credit for Premium txn" ECA="true" EFFECTIVE_END_DATE="Jan 1, 2026" EFFECTIVE_START_DATE="Jan 1, 2023" NAME="C_VAR_COMP_PREMIUM" NOTALLOWUPDATE="false" TYPE="DIRECT_TRANSACTION_CREDIT">
+            <ACTION_EXPRESSION_SET>
+                <ACTION_EXPRESSION>
+                    <FUNCTION ID="DIRECT_TRANSACTION_CREDIT_ALLGAs" RULE_TYPES="DIRECT_TRANSACTION_CREDIT">
+                        <OUTPUT_REFERENCE DISPLAY_NAME_FOR_REPORTS="C_VAR_COMP_PREMIUM" IS_REPORTABLE="1" NAME="CR_VAR_COMP_PREMIUM" PERIOD_TYPE="month" TYPE="Credit" UNIT_TYPE="USD"/>
+                        <DATA_FIELD>SalesTransaction.value</DATA_FIELD>
+                        <HOLD_REF NAME="Release Immediately" PERIOD_TYPE="Release Immediately"/>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <CREDIT_TYPE>CT_PREMIUM</CREDIT_TYPE>
+                        <BOOLEAN>false</BOOLEAN>
+                        <BOOLEAN>true</BOOLEAN>
+                        <DATA_FIELD>SalesTransaction.compensationDate</DATA_FIELD>
+                        <DATA_FIELD>SalesTransaction.productId</DATA_FIELD>
+                        <DATA_FIELD>SalesTransaction.genericAttribute1</DATA_FIELD>
+                        <DATA_FIELD>SalesTransaction.productName</DATA_FIELD>
+                        <DATA_FIELD>SalesTransaction.productDescription</DATA_FIELD>
+                        <DATA_FIELD>SalesTransaction.genericAttribute4</DATA_FIELD>
+                        <DATA_FIELD>SalesTransaction.genericAttribute5</DATA_FIELD>
+                        <DATA_FIELD>SalesTransaction.genericAttribute6</DATA_FIELD>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <FUNCTION ID="_deltaDate" RULE_TYPES="DIRECT_TRANSACTION_CREDIT|ROLLUP_TRANSACTION_CREDIT|DIRECT_ORDER_CREDIT|ROLLUP_ORDER_CREDIT|PRIMARY_MEASUREMENT|SECONDARY_MEASUREMENT|BONUS|BULK_COMMISSION|COMMISSION|DEPOSIT|DETAIL_DEPOSIT">
+                            <DATA_FIELD>Participant.terminationDate</DATA_FIELD>
+                            <DATA_FIELD>Period.endDate</DATA_FIELD>
+                            <STANDARD_PERIOD>Months</STANDARD_PERIOD>
+                            <BOOLEAN>true</BOOLEAN>
+                        </FUNCTION>
+                        <FUNCTION ID="_deltaDate" RULE_TYPES="DIRECT_TRANSACTION_CREDIT|ROLLUP_TRANSACTION_CREDIT|DIRECT_ORDER_CREDIT|ROLLUP_ORDER_CREDIT|PRIMARY_MEASUREMENT|SECONDARY_MEASUREMENT|BONUS|BULK_COMMISSION|COMMISSION|DEPOSIT|DETAIL_DEPOSIT">
+                            <DATA_FIELD>Participant.terminationDate</DATA_FIELD>
+                            <DATA_FIELD>Period.endDate</DATA_FIELD>
+                            <STANDARD_PERIOD>Years</STANDARD_PERIOD>
+                            <BOOLEAN>true</BOOLEAN>
+                        </FUNCTION>
+                        <FUNCTION ID="_deltaDate" RULE_TYPES="DIRECT_TRANSACTION_CREDIT|ROLLUP_TRANSACTION_CREDIT|DIRECT_ORDER_CREDIT|ROLLUP_ORDER_CREDIT|PRIMARY_MEASUREMENT|SECONDARY_MEASUREMENT|BONUS|BULK_COMMISSION|COMMISSION|DEPOSIT|DETAIL_DEPOSIT">
+                            <DATA_FIELD>Participant.terminationDate</DATA_FIELD>
+                            <DATA_FIELD>Period.endDate</DATA_FIELD>
+                            <STANDARD_PERIOD>Months</STANDARD_PERIOD>
+                            <BOOLEAN>false</BOOLEAN>
+                        </FUNCTION>
+                        <FUNCTION ID="_deltaDate" RULE_TYPES="DIRECT_TRANSACTION_CREDIT|ROLLUP_TRANSACTION_CREDIT|DIRECT_ORDER_CREDIT|ROLLUP_ORDER_CREDIT|PRIMARY_MEASUREMENT|SECONDARY_MEASUREMENT|BONUS|BULK_COMMISSION|COMMISSION|DEPOSIT|DETAIL_DEPOSIT">
+                            <DATA_FIELD>Participant.terminationDate</DATA_FIELD>
+                            <DATA_FIELD>Period.endDate</DATA_FIELD>
+                            <STANDARD_PERIOD>Years</STANDARD_PERIOD>
+                            <BOOLEAN>false</BOOLEAN>
+                        </FUNCTION>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                    </FUNCTION>
+                </ACTION_EXPRESSION>
+            </ACTION_EXPRESSION_SET>
+            <CONDITION_EXPRESSION>
+                <OPERATOR ID="ISEQUALTO_OPERATOR">
+                    <RULE_ELEMENT_REF ID="BOOLEAN_FORMULA_REF" NAME="F_PAYEE_CREDIT_ELIGIBILTY"/>
+                    <BOOLEAN>true</BOOLEAN>
+                </OPERATOR>
+            </CONDITION_EXPRESSION>
+            <EVENT_TYPE_EXPRESSION>
+                <OPERATOR ID="OR_OPERATOR">
+                    <OPERATOR ID="ISEQUALTO_OPERATOR">
+                        <DATA_FIELD>SalesTransaction.eventType.eventTypeId</DATA_FIELD>
+                        <STRING_LITERAL><![CDATA[ET_Premium]]></STRING_LITERAL>
+                    </OPERATOR>
+                    <OPERATOR ID="ISEQUALTO_OPERATOR">
+                        <DATA_FIELD>SalesTransaction.eventType.eventTypeId</DATA_FIELD>
+                        <STRING_LITERAL><![CDATA[ET_PREMIUM]]></STRING_LITERAL>
+                    </OPERATOR>
+                </OPERATOR>
+            </EVENT_TYPE_EXPRESSION>
+        </RULE>
+    </RULE_SET>
+    <RULE_SET>
+        <RULE BUSINESS_UNITS="BFSI_UK" CALENDAR="BFSI_Main_Monthly_Calendar" EFFECTIVE_END_DATE="Jan 1, 2200" EFFECTIVE_START_DATE="Jan 1, 2023" NAME="IR_CL_VAR_COMP_COMMISSION" NOTALLOWUPDATE="false" TYPE="BULK_COMMISSION">
+            <ACTION_EXPRESSION_SET>
+                <ACTION_EXPRESSION>
+                    <FUNCTION ID="INCENTIVE_GAS" RULE_TYPES="BULK_COMMISSION">
+                        <OUTPUT_REFERENCE DISPLAY_NAME_FOR_REPORTS="I_CL_VAR_COMP_COMMISSION" IS_REPORTABLE="1" NAME="IR_CL_VAR_COMP_COMMISSION" PERIOD_TYPE="month" TYPE="Incentive" UNIT_TYPE="USD"/>
+                        <MEASUREMENT_REF LIST_OPERATION="EXPECT_ONE" NAME="SM_CL_VAR_COMP_COMMISSION" OUTPUT_REFERENCE_PERIOD_TYPE="month" PAYEE_OFFSET="0" PERIOD_OFFSET="0" PERIOD_TYPE="month"/>
+                        <HOLD_REF NAME="Period Type" PERIOD_OFFSET="0" PERIOD_TYPE="month"/>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                    </FUNCTION>
+                </ACTION_EXPRESSION>
+            </ACTION_EXPRESSION_SET>
+        </RULE>
+    </RULE_SET>
+    <RULE_SET>
+        <RULE BUSINESS_UNITS="BFSI_UK" CALENDAR="BFSI_Main_Monthly_Calendar" EFFECTIVE_END_DATE="Jan 1, 2200" EFFECTIVE_START_DATE="Jan 1, 2023" NAME="DRR_COMP_COMMISSION" NOTALLOWUPDATE="false" TYPE="DEPOSIT">
+            <ACTION_EXPRESSION_SET>
+                <ACTION_EXPRESSION>
+                    <FUNCTION ID="DEPOSIT_GAS" RULE_TYPES="DEPOSIT">
+                        <OUTPUT_REFERENCE DISPLAY_NAME_FOR_REPORTS="DR_COMP_COMMISSION" IS_REPORTABLE="1" NAME="DR_COMP_COMMISSION" PERIOD_TYPE="month" TYPE="Deposit" UNIT_TYPE="USD"/>
+                        <STRING_LITERAL><![CDATA[EC_VC]]></STRING_LITERAL>
+                        <STRING_LITERAL><![CDATA[EG_VC]]></STRING_LITERAL>
+                        <OPERATOR ID="ADD_OPERATOR">
+                            <OPERATOR ID="ADD_OPERATOR">
+                                <INCENTIVE_REF LIST_OPERATION="EXPECT_ONE" NAME="I_PL_VAR_COMP_COMMISSION" OUTPUT_REFERENCE_PERIOD_TYPE="month" PAYEE_OFFSET="0" PERIOD_OFFSET="0" PERIOD_TYPE="month"/>
+                                <INCENTIVE_REF LIST_OPERATION="EXPECT_ONE" NAME="I_CL_VAR_COMP_COMMISSION" OUTPUT_REFERENCE_PERIOD_TYPE="month" PAYEE_OFFSET="0" PERIOD_OFFSET="0" PERIOD_TYPE="month"/>
+                            </OPERATOR>
+                            <MEASUREMENT_REF LIST_OPERATION="EXPECT_ONE" NAME="PM_VAR_COMP_MANUAL" OUTPUT_REFERENCE_PERIOD_TYPE="month" PAYEE_OFFSET="0" PERIOD_OFFSET="0" PERIOD_TYPE="month"/>
+                        </OPERATOR>
+                        <HOLD_REF NAME="Release Immediately" PERIOD_TYPE="Release Immediately"/>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                    </FUNCTION>
+                </ACTION_EXPRESSION>
+            </ACTION_EXPRESSION_SET>
+        </RULE>
+    </RULE_SET>
+    <RULE_SET>
+        <RULE BUSINESS_UNITS="BFSI_UK" CALENDAR="BFSI_Main_Monthly_Calendar" DESCRIPTION="Renew premium" EFFECTIVE_END_DATE="Jan 1, 2200" EFFECTIVE_START_DATE="Jan 1, 2023" NAME="PMR_VAR_COMP_PL_RENEW_PREMIUM" NOTALLOWUPDATE="false" TYPE="PRIMARY_MEASUREMENT">
+            <ACTION_EXPRESSION_SET>
+                <ACTION_EXPRESSION>
+                    <FUNCTION ID="PRIMARY_MEASUREMENT" RULE_TYPES="PRIMARY_MEASUREMENT">
+                        <OUTPUT_REFERENCE DISPLAY_NAME_FOR_REPORTS="PL_RENEW_PREMIUM" IS_REPORTABLE="1" NAME="PMR_VAR_COMP_PL_RENEW_PREMIUM" PERIOD_TYPE="month" TYPE="Measurement" UNIT_TYPE="USD"/>
+                        <DATA_FIELD>Credit.value</DATA_FIELD>
+                    </FUNCTION>
+                </ACTION_EXPRESSION>
+            </ACTION_EXPRESSION_SET>
+            <CONDITION_EXPRESSION>
+                <OPERATOR ID="AND_OPERATOR">
+                    <OPERATOR ID="ISEQUALTO_OPERATOR">
+                        <DATA_FIELD>Credit.creditType</DATA_FIELD>
+                        <CREDIT_TYPE>CT_PREMIUM</CREDIT_TYPE>
+                    </OPERATOR>
+                    <OPERATOR ID="ISEQUALTO_OPERATOR">
+                        <DATA_FIELD>Credit.genericAttribute2</DATA_FIELD>
+                        <STRING_LITERAL><![CDATA[Renew]]></STRING_LITERAL>
+                    </OPERATOR>
+                    <OPERATOR ID="ISEQUALTO_OPERATOR">
+                        <DATA_FIELD>Credit.genericAttribute3</DATA_FIELD>
+                        <STRING_LITERAL><![CDATA[Personal Line]]></STRING_LITERAL>
+                    </OPERATOR>
+                </OPERATOR>
+            </CONDITION_EXPRESSION>
+        </RULE>
+    </RULE_SET>
+    <RULE_SET>
+        <RULE BUSINESS_UNITS="BFSI_UK" CALENDAR="BFSI_Main_Monthly_Calendar" DESCRIPTION="Total new premium" EFFECTIVE_END_DATE="Jan 1, 2200" EFFECTIVE_START_DATE="Jan 1, 2023" NAME="SMR_VAR_COMP_PL_Total_NEW_Premium" NOTALLOWUPDATE="false" TYPE="SECONDARY_MEASUREMENT">
+            <ACTION_EXPRESSION_SET>
+                <ACTION_EXPRESSION>
+                    <FUNCTION ID="SECONDARY_MEASUREMENT_GAS" RULE_TYPES="SECONDARY_MEASUREMENT">
+                        <OUTPUT_REFERENCE DISPLAY_NAME_FOR_REPORTS="PL_Total_NEW_Premium" IS_REPORTABLE="1" NAME="SMR_VAR_COMP_PL_Total_NEW_Premium" PERIOD_TYPE="month" TYPE="Measurement" UNIT_TYPE="USD"/>
+                        <OPERATOR ID="ADD_OPERATOR">
+                            <MEASUREMENT_REF LIST_OPERATION="EXPECT_ONE" NAME="PM_VAR_COMP_PL_NEW_PREMIUM" OUTPUT_REFERENCE_PERIOD_TYPE="month" PAYEE_OFFSET="0" PERIOD_OFFSET="0" PERIOD_TYPE="month"/>
+                            <MEASUREMENT_REF LIST_OPERATION="EXPECT_ONE" NAME="PM_VAR_COMP_PL_NEW_11MM_PREMIUM" OUTPUT_REFERENCE_PERIOD_TYPE="month" PAYEE_OFFSET="0" PERIOD_OFFSET="0" PERIOD_TYPE="month"/>
+                        </OPERATOR>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <MEASUREMENT_REF LIST_OPERATION="EXPECT_ONE" NAME="PM_VAR_COMP_PL_NEW_PREMIUM" OUTPUT_REFERENCE_PERIOD_TYPE="month" PAYEE_OFFSET="0" PERIOD_OFFSET="0" PERIOD_TYPE="month"/>
+                        <MEASUREMENT_REF LIST_OPERATION="EXPECT_ONE" NAME="PM_VAR_COMP_PL_NEW_11MM_PREMIUM" OUTPUT_REFERENCE_PERIOD_TYPE="month" PAYEE_OFFSET="0" PERIOD_OFFSET="0" PERIOD_TYPE="month"/>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                    </FUNCTION>
+                </ACTION_EXPRESSION>
+            </ACTION_EXPRESSION_SET>
+        </RULE>
+    </RULE_SET>
+</DATA_IMPORT>

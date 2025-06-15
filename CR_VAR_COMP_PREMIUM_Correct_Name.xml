@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DATA_IMPORT LOCALE="en_US" VERSION="57.0">
+    <RULE_SET>
+        <RULE BUSINESS_UNITS="BFSI_UK" CALENDAR="BFSI_Main_Monthly_Calendar" DESCRIPTION="Calc credit for Premium txn" ECA="true" EFFECTIVE_END_DATE="Jan 1, 2026" EFFECTIVE_START_DATE="Jan 1, 2023" NAME="CR_VAR_COMP_PREMIUM" NOTALLOWUPDATE="false" TYPE="DIRECT_TRANSACTION_CREDIT">
+            <ACTION_EXPRESSION_SET>
+                <ACTION_EXPRESSION>
+                    <FUNCTION ID="DIRECT_TRANSACTION_CREDIT_ALLGAs" RULE_TYPES="DIRECT_TRANSACTION_CREDIT">
+                        <OUTPUT_REFERENCE DISPLAY_NAME_FOR_REPORTS="C_VAR_COMP_PREMIUM" IS_REPORTABLE="1" NAME="C_VAR_COMP_PREMIUM" PERIOD_TYPE="month" TYPE="Credit" UNIT_TYPE="CAD"/>
+                        <DATA_FIELD>SalesTransaction.value</DATA_FIELD>
+                        <HOLD_REF NAME="Release Immediately" PERIOD_TYPE="Release Immediately"/>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <CREDIT_TYPE>CT_PREMIUM</CREDIT_TYPE>
+                        <BOOLEAN>false</BOOLEAN>
+                        <BOOLEAN>true</BOOLEAN>
+                        <DATA_FIELD>SalesTransaction.compensationDate</DATA_FIELD>
+                        <DATA_FIELD>SalesTransaction.productId</DATA_FIELD>
+                        <DATA_FIELD>SalesTransaction.genericAttribute1</DATA_FIELD>
+                        <DATA_FIELD>SalesTransaction.productName</DATA_FIELD>
+                        <DATA_FIELD>SalesTransaction.productDescription</DATA_FIELD>
+                        <DATA_FIELD>SalesTransaction.genericAttribute4</DATA_FIELD>
+                        <DATA_FIELD>SalesTransaction.genericAttribute5</DATA_FIELD>
+                        <DATA_FIELD>SalesTransaction.genericAttribute6</DATA_FIELD>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <FUNCTION ID="_deltaDate" RULE_TYPES="DIRECT_TRANSACTION_CREDIT|ROLLUP_TRANSACTION_CREDIT|DIRECT_ORDER_CREDIT|ROLLUP_ORDER_CREDIT|PRIMARY_MEASUREMENT|SECONDARY_MEASUREMENT|BONUS|BULK_COMMISSION|COMMISSION|DEPOSIT|DETAIL_DEPOSIT">
+                            <DATA_FIELD>Participant.terminationDate</DATA_FIELD>
+                            <DATA_FIELD>Period.endDate</DATA_FIELD>
+                            <STANDARD_PERIOD>Months</STANDARD_PERIOD>
+                            <BOOLEAN>true</BOOLEAN>
+                        </FUNCTION>
+                        <FUNCTION ID="_deltaDate" RULE_TYPES="DIRECT_TRANSACTION_CREDIT|ROLLUP_TRANSACTION_CREDIT|DIRECT_ORDER_CREDIT|ROLLUP_ORDER_CREDIT|PRIMARY_MEASUREMENT|SECONDARY_MEASUREMENT|BONUS|BULK_COMMISSION|COMMISSION|DEPOSIT|DETAIL_DEPOSIT">
+                            <DATA_FIELD>Participant.terminationDate</DATA_FIELD>
+                            <DATA_FIELD>Period.endDate</DATA_FIELD>
+                            <STANDARD_PERIOD>Years</STANDARD_PERIOD>
+                            <BOOLEAN>true</BOOLEAN>
+                        </FUNCTION>
+                        <FUNCTION ID="_deltaDate" RULE_TYPES="DIRECT_TRANSACTION_CREDIT|ROLLUP_TRANSACTION_CREDIT|DIRECT_ORDER_CREDIT|ROLLUP_ORDER_CREDIT|PRIMARY_MEASUREMENT|SECONDARY_MEASUREMENT|BONUS|BULK_COMMISSION|COMMISSION|DEPOSIT|DETAIL_DEPOSIT">
+                            <DATA_FIELD>Participant.terminationDate</DATA_FIELD>
+                            <DATA_FIELD>Period.endDate</DATA_FIELD>
+                            <STANDARD_PERIOD>Months</STANDARD_PERIOD>
+                            <BOOLEAN>false</BOOLEAN>
+                        </FUNCTION>
+                        <FUNCTION ID="_deltaDate" RULE_TYPES="DIRECT_TRANSACTION_CREDIT|ROLLUP_TRANSACTION_CREDIT|DIRECT_ORDER_CREDIT|ROLLUP_ORDER_CREDIT|PRIMARY_MEASUREMENT|SECONDARY_MEASUREMENT|BONUS|BULK_COMMISSION|COMMISSION|DEPOSIT|DETAIL_DEPOSIT">
+                            <DATA_FIELD>Participant.terminationDate</DATA_FIELD>
+                            <DATA_FIELD>Period.endDate</DATA_FIELD>
+                            <STANDARD_PERIOD>Years</STANDARD_PERIOD>
+                            <BOOLEAN>false</BOOLEAN>
+                        </FUNCTION>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                        <STRING_LITERAL>NULL</STRING_LITERAL>
+                    </FUNCTION>
+                </ACTION_EXPRESSION>
+            </ACTION_EXPRESSION_SET>
+            <CONDITION_EXPRESSION>
+                <OPERATOR ID="ISEQUALTO_OPERATOR">
+                    <RULE_ELEMENT_REF ID="BOOLEAN_FORMULA_REF" NAME="F_PAYEE_CREDIT_ELIGIBILTY"/>
+                    <BOOLEAN>true</BOOLEAN>
+                </OPERATOR>
+            </CONDITION_EXPRESSION>
+            <EVENT_TYPE_EXPRESSION>
+                <OPERATOR ID="OR_OPERATOR">
+                    <OPERATOR ID="ISEQUALTO_OPERATOR">
+                        <DATA_FIELD>SalesTransaction.eventType.eventTypeId</DATA_FIELD>
+                        <STRING_LITERAL><![CDATA[ET_Premium]]></STRING_LITERAL>
+                    </OPERATOR>
+                    <OPERATOR ID="ISEQUALTO_OPERATOR">
+                        <DATA_FIELD>SalesTransaction.eventType.eventTypeId</DATA_FIELD>
+                        <STRING_LITERAL><![CDATA[ET_PREMIUM]]></STRING_LITERAL>
+                    </OPERATOR>
+                </OPERATOR>
+            </EVENT_TYPE_EXPRESSION>
+        </RULE>
+    </RULE_SET>
+</DATA_IMPORT>
